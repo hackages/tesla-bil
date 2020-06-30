@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import teslaService from "./tesla-battery.service";
+import { initialData } from "../mocks/data";
 import {
   TeslaCar,
   TeslaClimate,
@@ -9,15 +10,7 @@ import {
 } from "../components";
 
 export class TeslaBattery extends Component {
-  state = {
-    title: "Ranger Per Charge",
-    models: ["60", "60D", "75", "75D", "90D", "P100D"],
-    wheels: 19,
-    climate: true,
-    temperature: 20,
-    speed: 55,
-    metrics: {},
-  };
+  state = initialData;
 
   changeClimate = () => {
     this.setState({ climate: !this.state.climate });
@@ -50,18 +43,7 @@ export class TeslaBattery extends Component {
 
         <TeslaCar wheels={wheels} speed={speed} />
 
-        <TeslaStats
-          stats={models.map((model) => {
-            const miles =
-              metrics[model][wheels][climate ? "on" : "off"].speed[speed][
-                temperature
-              ];
-            return {
-              model,
-              miles,
-            };
-          })}
-        />
+        <TeslaStats {...this.state} />
 
         <div className="tesla-controls cf">
           <TeslaCounter
@@ -71,7 +53,7 @@ export class TeslaBattery extends Component {
             min={45}
             max={70}
             changeVal={(value) => this.setState({ speed: value })}
-            value={this.state.speed}
+            value={this.state.speed.value}
           />
           <div className="tesla-climate cf">
             <TeslaCounter
@@ -81,7 +63,7 @@ export class TeslaBattery extends Component {
               min={-10}
               max={40}
               changeVal={(value) => this.setState({ temperature: value })}
-              value={this.state.temperature}
+              value={this.state.temperature.value}
             />
 
             <TeslaClimate
