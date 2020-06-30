@@ -1,6 +1,6 @@
 import React from "react";
 
-const TeslaStatsComponent = (props) => {
+export const TeslaStats = (props) => {
   const { models, wheels, climate, temperature, speed, metrics } = props;
   return (
     <div className="tesla-stats">
@@ -31,5 +31,3 @@ const TeslaStatsComponent = (props) => {
     </div>
   );
 };
-
-export default TeslaStatsComponent;

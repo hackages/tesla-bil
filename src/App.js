@@ -3,7 +3,7 @@ import "./tesla-style.scss";
 import logo from "./assets/logo.svg";
 import { TeslaBattery } from "./tesla-battery/TeslaBattery";
 
-export function App() {
+export function App(props) {
   return (
     <>
       <header className="header">

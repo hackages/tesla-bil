@@ -1,6 +1,6 @@
 import React from "react";
-export function TeslaCarComponent(props) {
-  const { wheels, speed } = props;
+
+export const TeslaCar = ({ wheels, speed }) => {
   return (
     <div className="tesla-car">
       <div className="tesla-wheels">
@@ -13,4 +13,4 @@ export function TeslaCarComponent(props) {
       </div>
     </div>
   );
-}
+};
